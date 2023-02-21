@@ -1,9 +1,13 @@
-<h1>My Travel Journal</h1>
-
-<p><%= link_to "New Place", new_place_path %></p>
+<h1>Places I've been</h1>
 
 <ul>
-  <% @places.each do |place| %>
-    <li><%= link_to place.name, place_path(place) %></li>
-  <% end %>
+<% for place in @places%>
+    <li>
+    <a href="/places/<%=place["id"]%>"><%=place["name"]%></a>
+    </li>
+<%end%>
 </ul>
+
+<p>
+    <a href="/places/new">Create New Place</a>
+</p>

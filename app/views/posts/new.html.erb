@@ -1,22 +1,7 @@
-<h1>New Post</h1>
+<p>
+    <a href="/posts/new?place_id=<%=@place["id"]%>">Create New post for<%= @place["name"]%></a>
+</p>
 
-<%= form_for([@place, @post]) do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.label :posted_on %><br>
-    <%= f.date_field :posted_on %>
-  </p>
-
-  <%= f.submit %>
-<% end %>
-
-<%= link_to "Back", place_path(@place) %>
+<p>
+<a href="/places">Back to all places</a>
+</p>

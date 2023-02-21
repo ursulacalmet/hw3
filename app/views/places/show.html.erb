@@ -1,9 +1,26 @@
-<h1><%= @place.name %></h1>
-
-<p><%= link_to "New Post", new_place_post_path(@place) %></p>
+<h1><%= @place["name"] %></h1>
 
 <ul>
-  <% @posts.each do |post| %>
-    <li><%= link_to post.title, place_post_path(@place, post) %></li>
-  <% end %>
+<% for post in @posts%>
+<p> <%= post ["title"]%></p>
+<p> <%= post ["description"]%></p>
+<p> <%= post ["posted_on"]%></p>
+<%end%>
 </ul>
+
+<h1> new post for <%=@place ["name"]%></h1>
+
+<%= form_with :model => @post do |form| %>
+  <p>
+    <%= form.label "title" %>
+    <%= form.text_field "title" %>
+  </p>
+  <p>
+    <%= form.label "description" %>
+    <%= form.text_field "description" %>
+    <%= form.label "posted_on" %>
+    <%= form.date_field "posted_on" %>
+     <%= form.hidden_field "place_id" %>
+  </p>
+    <p><%= form.submit %></p>
+ <%end%>
