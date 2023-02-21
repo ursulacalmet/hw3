@@ -1,0 +1,17 @@
+<h1>My Travel Journal</h1>
+
+<p><%= link_to "New Place", new_place_path %></p>
+
+<ul>
+  <% @places.each do |place| %>
+    <li>
+      <%= link_to place.name, place_path(place) %>
+      (<%= link_to "New Post", new_place_post_path(place) %>)
+    </li>
+  <% end %>
+</ul>
+
+def index
+  @places = Place.all
+  render({ :template => "places/index.html.erb" })
+end
